@@ -1,0 +1,24 @@
+<%- include("partials/header"); -%>
+
+<h1>Compose</h1>
+<form action="/addalumni" method="post">
+    <label for="">Name</label>
+    <input class="form-control" type="text" name="name">
+    <label for="">Email</label>
+    <input class="form-control" type="text" name="email">
+    <label for="">Branch</label>
+    <input class="form-control" type="text" name="branch">
+    <label for="">Language</label>
+    <input class="form-control" type="text" name="language">
+    <label for="">Phone</label>
+    <input class="form-control" type="text" name="phone">
+    <label for="">Address</label>
+    <input class="form-control" type="text" name="address">
+    <label for="">Profession</label>
+    <input class="form-control" type="text" name="profession">
+    <label for="">DOB</label>
+    <input class="form-control" type="text" name="dob">
+
+    <button class="btn btn-primary" type="submit">Publish</button>
+</form>
+<%- include("partials/footer"); -%>

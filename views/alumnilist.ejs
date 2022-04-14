@@ -1,0 +1,21 @@
+<%- include("partials/header"); -%>
+
+<%if(alumniList.length === 0){%>
+    <h1>No Posts Yet</h1>
+    <%}else{%>
+        <%alumniList.forEach(function(element){%>
+            <h1><%=element.name%></h1> 
+            <p><%=element.email%> </p>  <br>
+            <p><%=element.language%></p><br>
+            <p><%=element.profession%></p><br>
+            <p><%=element.branch%></p><br>
+            <p><%=element.address%> </p>  <br>
+            <p><%=element.phone%> </p>  <br>
+            <p><%=element.dob%> </p><br>
+
+            
+           
+        <%});%>
+    <%}%>
+
+<%- include("partials/footer"); -%>

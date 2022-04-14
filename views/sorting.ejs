@@ -1,0 +1,28 @@
+<%- include("partials/header"); -%>
+
+<form action="/home/search/name" method="post">
+    <input type="text" name="alumniName"></input>
+    <button class="sortDivs" name="name" type="submit"><h1>Sort by Name</h1></button>
+</form>
+
+<form action="/home/search/branch" method="post">
+    <input type="text" name="alumniBranch"></input>
+    <button class="sortDivs" name="name" type="submit"><h1>Search by Branch</h1></button>
+</form>
+
+<form action="/home/search/language" method="post">
+    <input type="text" name="alumniLanguage"></input>
+    <button class="sortDivs" name="name" type="submit"><h1>Search by Language</h1></button>
+</form>
+<form action="/home/search/profession" method="post">
+    <input type="text" name="alumniProfession"></input>
+    <button class="sortDivs" name="name" type="submit"><h1>Search by Profession</h1></button>
+</form>
+<form action="/home/search/dob" method="post">
+    <input type="text" name="alumniDOB"></input>
+    <button class="sortDivs" name="name" type="submit"><h1>Search by DOB</h1></button>
+</form>
+
+
+
+<%- include("partials/footer"); -%>
