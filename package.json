@@ -1,0 +1,26 @@
+{
+  "name": "alumni-accquaint",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/subodh-ingole/alumni-accquaint-pbl.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/subodh-ingole/alumni-accquaint-pbl/issues"
+  },
+  "homepage": "https://github.com/subodh-ingole/alumni-accquaint-pbl#readme",
+  "dependencies": {
+    "ejs": "^3.0.2",
+    "express": "^4.17.3",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.2.11"
+  }
+}
