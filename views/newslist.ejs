@@ -1,0 +1,19 @@
+
+<%- include("partials/header"); -%>
+
+<%if(newsList.length === 0){%>
+    <h1>No Posts Yet</h1>
+    <%}else{%>
+        <%newsList.forEach(function(element){%>
+            <!-- <p><%=element.source.name%></p><br> -->
+            <a rel="stylesheet" href="<%=element.url%>"><h1><%=element.title%></h1></a>
+            <p><h4><%=element.description%></h4> </p>  <br>
+            <p><%=element.address%> </p>  <br>
+            <p><%=element.phone%> </p>  <br>
+            <p><%=element.dob%> </p><br>
+            
+           
+        <%});%>
+    <%}%>
+
+<%- include("partials/footer"); -%>

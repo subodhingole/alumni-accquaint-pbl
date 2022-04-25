@@ -8,6 +8,8 @@ const app = express();
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+const NewsAPI = require('newsapi');
+const newsapi = new NewsAPI('4aa9cbbbe2bf4c40b56eb67556beb7eb');
 
 mongoose.connect(
     'mongodb://localhost:27017/alumniDB'
@@ -55,6 +57,21 @@ app.get("/alumnilist", function (req, res) {
 	});
 });
 
+app.get("/news",function(req,res){
+    newsapi.v2.topHeadlines({
+        category: 'technology',
+        language: 'en',
+        country: 'in'
+    }).then(response => {
+        console.log(response.articles.title);
+        res.render("newslist",{
+            newsList : response.articles,
+            dir:__dirname,
+        })
+    }
+    )
+})
+
 app.get("/about",function(req,res){
     res.render("alumnilist",{
         alumniList:[{name:"About Us",email:"The Purpose behind the Alumni Interaction Project was to provide a cleaner, easier, and a safer way to interact with the alumnis. Organizers had to sacrifice their precious time for some alumni to respond One on One."}],
@@ -67,7 +84,8 @@ app.post("/home/search/:sort",function(req,res){
         res.redirect("/");
     }
     if(req.params.sort === "name"){
-        Alumni.find({name: req.body.alumniName},function(err,alumni){
+        const thename = req.body.alumniName;
+        Alumni.find({name:thename},function(err,alumni){
             if(!err){
                 if(alumni.length===0){
                     res.render("alumnilist",{

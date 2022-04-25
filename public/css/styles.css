@@ -135,3 +135,7 @@ hr {
 	margin: 20px auto;
 	border-radius: 20px;
 }
+
+twobuttons{
+	display: inline;
+}
