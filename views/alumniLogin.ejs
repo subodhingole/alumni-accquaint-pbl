@@ -1,0 +1,21 @@
+    <%- include("partials/header"); -%>
+
+<form action="/alumnihome" method="post">
+  <div class="container">
+    <h1>Alumni Login</h1>
+    <p>Enter Login Credentials</p>
+    <hr>
+
+    <label for="username"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="username" id="username" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+
+  </div>
+  <button type="submit" class="loginbtn">Submit</button>
+</form>
+
+
+
+<%- include("partials/footer"); -%>

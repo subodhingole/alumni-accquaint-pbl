@@ -136,6 +136,72 @@ hr {
 	border-radius: 20px;
 }
 
-twobuttons{
-	display: inline;
+.btnone{
+    display: inline-block;
+    width: 250px;
+    margin : 20px;
+    margin-top: 0px;
+	margin-bottom : 0px;
+
 }
+
+.bosscontainer{
+	width: 49.8%;
+	height: 450px;
+	display: inline-block;
+	margin-left: 0px;
+	padding: 0px;
+	overflow: auto;
+	border-radius: 25px;
+	border: 2px solid #73AD21;
+	padding: 30px;
+
+}
+
+.bosscontainer::-webkit-scrollbar{
+	width: 5px;
+}
+
+.container{
+	position: relative;
+	padding: 0px;
+}
+
+.bottomcarousel{
+
+		background-color: #111;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 10vh;
+		margin-top: 20px;
+		border-radius: 10px;
+
+}
+
+.bossbutton{
+	width: 100%;
+	height: 50px;
+	border-radius: 25px;
+	border: 2px solid #73AD21;
+	margin-top: 20px;
+	margin-bottom: 20px;
+
+}
+.waviy {
+	position: relative;
+  }
+  .waviy span {
+	position: relative;
+	display: inline-block;
+	font-size: 40px;
+	color: #fff;
+	text-transform: uppercase;
+	animation: flip 2s infinite;
+	animation-delay: calc(.2s * var(--i))
+  }
+  @keyframes flip {
+	0%,80% {
+	  transform: rotateY(360deg) 
+	}
+  }

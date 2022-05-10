@@ -22,6 +22,7 @@
     "express": "^4.17.3",
     "lodash": "^4.17.21",
     "mongoose": "^6.2.11",
-    "newsapi": "^2.4.1"
+    "newsapi": "^2.4.1",
+    "nodemon": "^2.0.16"
   }
 }
