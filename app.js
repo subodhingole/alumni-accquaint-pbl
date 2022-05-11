@@ -32,14 +32,25 @@ const adminSchema = {
   password: String,
 };
 
+const alumniLoginSchema = {
+  username: String,
+  password: String,
+};
+
 const newsSchema = {
-    title: String,
-    information: String
+  title: String,
+  information: String,
+};
+
+const taskSchema = {
+  title: String,
 }
 
 const Alumni = mongoose.model("Alumni", alumniSchema);
 const Admin = mongoose.model("Admin", adminSchema);
-const News = mongoose.model("News",newsSchema);
+const News = mongoose.model("News", newsSchema);
+const AlumniLogin = mongoose.model("AlumniLogin", alumniLoginSchema);
+const Task = mongoose.model("Task", taskSchema);
 
 app.get("/", function (req, res) {
   res.render("login");
@@ -167,6 +178,13 @@ app.post("/home/search/:sort", function (req, res) {
   }
 });
 
+app.get("/alumnihome:request", function (req, res) {
+  if (Logged === 0) {
+    res.redirect("/");
+  } else {
+    res.render("request");
+  }
+});
 app.get("/home", function (req, res) {
   if (Logged === 1) {
     res.render("home");
@@ -200,17 +218,17 @@ app.get("/addalumni", function (req, res) {
   res.render("addalumni");
 });
 
-app.post("/addnews",function(req,res){
-    const titles = req.body.title;
-    const informations = req.body.information;
+app.post("/addnews", function (req, res) {
+  const titles = req.body.title;
+  const informations = req.body.information;
 
-    const newNews = new News({
-        title : titles,
-        information: informations
-    })
-    newNews.save();
-    res.render("home");
-})
+  const newNews = new News({
+    title: titles,
+    information: informations,
+  });
+  newNews.save();
+  res.render("home");
+});
 
 app.post("/alumniLogin", function (req, res) {
   res.render("alumniLogin");
@@ -249,31 +267,80 @@ app.post("/", function (req, res) {
   });
 });
 
-app.post("/alumnihome", function (req, res) {
-//    if(Logged==1){
-//        News.find({},function(err,news){
-//            if(!err){
-//                if(!news){
-//                 console.log("there is no news to be displayed");
-//                }else{
-//                    console.log("there is something that is going to get displayed here");
-//                    console.log(news);
-//                }
-//            }
-//        })
-//    }
-News.find({},function(err,news){
-    if(!err){
-        res.render("alumnihome",{
-            newsList: news,
-            dir: __dirname,
-
-        })
-
-    }
-})
-
+app.get("/alumnihome", function (req, res) {
+  
+  if (Logged === 0) {
+    res.redirect("/");
+  } else {
+    AlumniLogin.find(
+      { username: userName, password: passWord },
+      function (err, alumni) {
+        if (!err) {
+          if (alumni.length === 0) {
+            res.redirect("/alumnilogin");
+          } else {
+            Logged = 2;
+            News.find({}, function (err, news) {
+              if (!err) {
+                news.reverse();
+                res.render("alumnihome", {
+                  newsList: news,
+                  dir: __dirname,
+                });
+              }
+            });
+          }
+        }
+      }
+    );
+  }
 });
+
+app.post("/alumnihome", function (req, res) {
+  Logged = 2;
+  userName = req.body.username;
+  passWord = req.body.psw;
+  console.log(userName, passWord);
+  AlumniLogin.find(
+    { username: userName, password: passWord },
+    function (err, alumni) {
+      if (!err) {
+        if (alumni.length === 0) {
+          res.redirect("/alumnilogin");
+        } else {
+          Logged = 2;
+          News.find({}, function (err, news) {
+            if (!err) {
+              news.reverse();
+              res.render("alumnihome", {
+                newsList: news,
+                dir: __dirname,
+              });
+            }
+          });
+        }
+      }
+    }
+  );
+});
+
+app.get("/tasks",function(req,res){
+
+  if(Logged === 0){
+    res.redirect("/");
+  }
+  else{
+    Task.find({},function(err,task){
+      if(!err){
+        res.render("tasks",{
+          tasksList:task,
+          dir:__dirname
+        });
+      }
+    })
+  }
+
+})
 
 let port = process.env.PORT;
 if (port == null || port == "") {

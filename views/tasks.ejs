@@ -1,0 +1,13 @@
+<%- include("partials/header"); -%>
+
+<%if(tasksList.length === 0){%>
+    <h1>No Posts Yet</h1>
+    <%}else{%>
+        <%}var count = 1;{%>
+        <%tasksList.forEach(function(element){%>
+            <h1 style="font-family: 'Josefin Sans', sans-serif;"><%=count%>. <%=element.title%></h1>  
+            <% count++; %>
+        <%});%>
+    <%}%>
+
+<%- include("partials/footer"); -%>

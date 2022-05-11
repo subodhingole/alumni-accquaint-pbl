@@ -8,6 +8,11 @@ p {
 	align-items: center;
 }
 
+.navbar-header{
+	position:relative;
+	right: 150px;
+}
+
 .navbar {
 	padding-top: 15px;
 	padding-bottom: 15px;
@@ -64,11 +69,10 @@ p {
 
 /* Full-width input fields */
 input[type=text], input[type=password] {
-  width: 100%;
+
   padding: 15px;
   margin: 5px 0 22px 0;
   display: inline-block;
-  border: none;
   background: #f1f1f1;
 }
 
@@ -129,11 +133,19 @@ hr {
 }
 
 .sortDivs{
-	width: 100%;
-	background-color: #04AA6D;
+	width: 30vw;
+	background-color: #1abc9c;
 	padding: 10px;
-	margin: 20px auto;
+	height:60px;
+	position: relative;
+	top:10px;
 	border-radius: 20px;
+}
+
+.inputsorting{
+	width: 50%;
+	border-radius: 10px;
+	border: 1px solid black;
 }
 
 .btnone{
@@ -205,3 +217,5 @@ hr {
 	  transform: rotateY(360deg) 
 	}
   }
+
+  

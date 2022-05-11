@@ -1,27 +1,32 @@
 <%- include("partials/header"); -%>
 
-<form action="/" method="post">
+<form style="display:inline" action="/" method="post">
   <div class="container">
-    <h1>Login</h1>
+    <h1 style="font-family: 'Josefin Sans', sans-serif;">Login</h1>
     <p>Enter Login Credentials</p>
     <hr>
 
     <label for="username"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="username" id="username" required>
+    <input style="  width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;" type="text" placeholder="Enter Username" name="username" id="username" required>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+    <input style="  width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;" type="password" placeholder="Enter Password" name="psw" id="psw" required>
 
   </div>
-  <button type="submit" class="loginbtn btnone">Submit</button>
+  <button style="display:inline;margin-top: 10px;"type="submit" class="loginbtn btnone">Submit</button>
 </form>
-<hr>
-  <form action="/alumniLogin" method="post">
+  <form style="display:inline;margin-top: 10px;" action="/alumniLogin" method="post">
     <button  class="loginbtn btnone">Alumni Login</button>
   </form>
-
-
-
-
 
 <%- include("partials/footer"); -%>

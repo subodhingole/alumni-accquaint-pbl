@@ -6,21 +6,21 @@
         <h1>No Posts Yet</h1>
         <%}else{%>
             <%newsList.forEach(function(element){%>
-                <h1 style="display:inline-block"><%=element.title%></h1> <br>
-                <p style="display:inline"><%=element.information%> </p>  <br>
+                <h1 style="display:inline-block;font-family: 'Josefin Sans', sans-serif;"><%=element.title%></h1> 
+                <p style="display:inline"><%=element.information%> </p>  <br><br>
             <%});%>
         <%}%>
     
 </div>
 <div class="bosscontainer">
     <div class="threeinner">
-        <button class="bossbutton" onclick="window.location.href='/alumnihome'"><h2>Home</h2></button>
+        <button class="bossbutton" onclick="window.location.href='/alumnihome'"><h2 style="font-family: 'Josefin Sans', sans-serif;">Home</h2></button>
     </div>
     <div class="threeinner">
-        <button class="bossbutton" onclick="window.location.href='/alumnihome'"><h2>Request Profile Update</h2></button>
+        <button class="bossbutton" onclick="window.location.href='/alumnihome:request'"><h2 style="font-family: 'Josefin Sans', sans-serif;">Request Profile Update</h2></button>
     </div>
     <div class="threeinner">
-        <button class="bossbutton" onclick="window.location.href='/alumnihome'"><h2>Upcoming Tasks</h2></button>
+        <button class="bossbutton" onclick="window.location.href='/tasks'"><h2 style="font-family: 'Josefin Sans', sans-serif;">Upcoming Tasks</h2></button>
     </div>
     <div style="border-radius:25px;display:flex;justify-content:center;align-items:center;width:100%;height:100px;background-color: aliceblue;">
         powered by &nbsp;

@@ -1,0 +1,23 @@
+<%- include("partials/header"); -%>
+
+<form action="/alumnihome" method="post">
+  <div class="container">
+    <h1 style="font-family: 'Josefin Sans', sans-serif;">Make a Profile Update Request</h1>
+    <p>Enter Login Credentials</p>
+    <hr>
+
+    <label for="title"><b>Request</b></label>
+    <input type="text" placeholder="Enter Request Heading" name="request" id="username" required>
+
+    <label for="psw"><b>Description</b></label>
+    <input type="password" placeholder="Enter Details" name="description" id="description" required>
+
+  </div>
+  <button type="submit" class="loginbtn btnone" onclick="window.location.href='/alumnihome'">Submit</button>
+</form>
+
+
+
+
+
+<%- include("partials/footer"); -%>
