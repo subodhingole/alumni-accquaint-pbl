@@ -1,5 +1,5 @@
 
-# Alumni Acquaint || Your One-Stop Destination for alumni interaction
+# Alumni Acquaint || Your One-Stop Destination for Alumni Interaction
 
     Alumni Acquaint is a web application which allows 
     smooth and seamless interaction services 
