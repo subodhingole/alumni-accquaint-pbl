@@ -12,7 +12,7 @@ const NewsAPI = require("newsapi");
 const { stringify } = require("nodemon/lib/utils");
 const newsapi = new NewsAPI("4aa9cbbbe2bf4c40b56eb67556beb7eb");
 
-mongoose.connect("mongodb+srv://fester:B5PK5Pm2TQBg0LH4@cluster0.urtjh.mongodb.net/?retryWrites=true&w=majority");
+mongoose.connect("mongodb+srv://fester:B5PK5Pm2TQBg0LH4@cluster0.urtjh.mongodb.net/alumniDB");
 
 var Logged = 0;
 

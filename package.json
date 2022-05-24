@@ -13,6 +13,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "16.14.0"
+  },
   "bugs": {
     "url": "https://github.com/subodh-ingole/alumni-accquaint-pbl/issues"
   },
