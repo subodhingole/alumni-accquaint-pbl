@@ -1,0 +1,30 @@
+<%- include("partials/header"); -%>
+
+<form style="display:inline" action="/suggestionhandle" method="post">
+  <div class="container">
+    <h1 style="font-family: 'Josefin Sans', sans-serif;">Suggestions Tab</h1>
+    <p>Enter suggestions which you think will be fruitful for the College.</p>
+    <hr>
+
+    <label for="username"><b>Title</b></label>
+    <input style="  width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;" type="text" placeholder="Enter Suggestion Title" name="title" id="username" required>
+
+    <label for="psw"><b>Description</b></label>
+    <input style="  width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;" type="text" placeholder="Enter Description" name="psw" id="psw" required>
+
+  </div>
+  <button style="display:inline;margin-top: 10px;"type="submit" class="loginbtn btnone">Submit Your Suggestion</button>
+</form>
+
+
+<%- include("partials/footer"); -%>

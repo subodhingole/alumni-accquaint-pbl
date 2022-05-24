@@ -12,13 +12,14 @@ const NewsAPI = require("newsapi");
 const { stringify } = require("nodemon/lib/utils");
 const newsapi = new NewsAPI("4aa9cbbbe2bf4c40b56eb67556beb7eb");
 
-mongoose.connect("mongodb://localhost:27017/alumniDB");
+mongoose.connect("mongodb+srv://fester:B5PK5Pm2TQBg0LH4@cluster0.urtjh.mongodb.net/?retryWrites=true&w=majority");
 
 var Logged = 0;
 
 const alumniSchema = {
   name: String,
   email: String,
+  yop: String,
   branch: String,
   profession: String,
   language: String,
@@ -26,6 +27,11 @@ const alumniSchema = {
   address: String,
   dob: String,
 };
+
+const suggestionSchema = {
+  suggestionTitle: String,
+  suggestionDescription: String
+}
 
 const adminSchema = {
   username: String,
@@ -51,6 +57,7 @@ const Admin = mongoose.model("Admin", adminSchema);
 const News = mongoose.model("News", newsSchema);
 const AlumniLogin = mongoose.model("AlumniLogin", alumniLoginSchema);
 const Task = mongoose.model("Task", taskSchema);
+const Suggestion = mongoose.model("Suggestion", suggestionSchema);
 
 app.get("/", function (req, res) {
   res.render("login");
@@ -101,6 +108,16 @@ app.get("/about", function (req, res) {
 app.get("/alumnilogin", function (req, res) {
   res.render("alumnilogin");
 });
+
+app.post("/suggestionhandle",function(req,res){
+  const newSuggestion = new Suggestion({
+    suggestionTitle: req.body.suggestionTitle,
+    suggestionDescription: req.body.suggestionDescription
+  })
+  newSuggestion.save();
+  res.redirect("/alumnihome");
+})
+
 app.post("/home/search/:sort", function (req, res) {
   if (Logged === 0) {
     res.redirect("/");
@@ -238,6 +255,7 @@ app.post("/addalumni", function (req, res) {
   const newAlumni = new Alumni({
     name: req.body.name,
     email: req.body.email,
+    yop: req.body.yop,
     phone: req.body.phone,
     address: req.body.address,
     dob: req.body.dob,
@@ -248,6 +266,15 @@ app.post("/addalumni", function (req, res) {
   newAlumni.save();
   res.render("home");
 });
+
+app.get("/suggestions",function(req,res){
+  if(Logged === 0){
+    res.redirect("/");
+  }
+  else{
+    res.render("suggestions");
+  }
+})
 
 app.post("/", function (req, res) {
   userName = req.body.username;
