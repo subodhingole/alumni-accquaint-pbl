@@ -1,7 +1,7 @@
 {
   "name": "alumni-accquaint",
   "version": "1.0.0",
-  "description": "",
+  "description": "Alumni Acquaint is a web application which allows \r     smooth and seamless interaction services \r     between college admins and their alumnis.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,11 +21,13 @@
   },
   "homepage": "https://github.com/subodh-ingole/alumni-accquaint-pbl#readme",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "ejs": "^3.0.2",
     "express": "^4.17.3",
     "lodash": "^4.17.21",
     "mongoose": "^6.2.11",
     "newsapi": "^2.4.1",
     "nodemon": "^2.0.16"
-  }
+  },
+  "devDependencies": {}
 }

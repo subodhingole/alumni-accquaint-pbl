@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
 const app = express();
+require("dotenv").config(); //Keep this at top of your file
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -12,7 +13,7 @@ const NewsAPI = require("newsapi");
 const { stringify } = require("nodemon/lib/utils");
 const newsapi = new NewsAPI("4aa9cbbbe2bf4c40b56eb67556beb7eb");
 
-mongoose.connect("mongodb+srv://fester:@cluster0.urtjh.mongodb.net/alumniDB");
+mongoose.connect(process.env.MONGODBURI);
 
 var Logged = 0;
 
@@ -30,8 +31,8 @@ const alumniSchema = {
 
 const suggestionSchema = {
   suggestionTitle: String,
-  suggestionDescription: String
-}
+  suggestionDescription: String,
+};
 
 const adminSchema = {
   username: String,
@@ -50,7 +51,7 @@ const newsSchema = {
 
 const taskSchema = {
   title: String,
-}
+};
 
 const Alumni = mongoose.model("Alumni", alumniSchema);
 const Admin = mongoose.model("Admin", adminSchema);
@@ -109,14 +110,14 @@ app.get("/alumnilogin", function (req, res) {
   res.render("alumnilogin");
 });
 
-app.post("/suggestionhandle",function(req,res){
+app.post("/suggestionhandle", function (req, res) {
   const newSuggestion = new Suggestion({
     suggestionTitle: req.body.suggestionTitle,
-    suggestionDescription: req.body.suggestionDescription
-  })
+    suggestionDescription: req.body.suggestionDescription,
+  });
   newSuggestion.save();
   res.redirect("/alumnihome");
-})
+});
 
 app.post("/home/search/:sort", function (req, res) {
   if (Logged === 0) {
@@ -267,14 +268,13 @@ app.post("/addalumni", function (req, res) {
   res.render("home");
 });
 
-app.get("/suggestions",function(req,res){
-  if(Logged === 0){
+app.get("/suggestions", function (req, res) {
+  if (Logged === 0) {
     res.redirect("/");
-  }
-  else{
+  } else {
     res.render("suggestions");
   }
-})
+});
 
 app.post("/", function (req, res) {
   userName = req.body.username;
@@ -295,7 +295,6 @@ app.post("/", function (req, res) {
 });
 
 app.get("/alumnihome", function (req, res) {
-  
   if (Logged === 0) {
     res.redirect("/");
   } else {
@@ -351,23 +350,20 @@ app.post("/alumnihome", function (req, res) {
   );
 });
 
-app.get("/tasks",function(req,res){
-
-  if(Logged === 0){
+app.get("/tasks", function (req, res) {
+  if (Logged === 0) {
     res.redirect("/");
-  }
-  else{
-    Task.find({},function(err,task){
-      if(!err){
-        res.render("tasks",{
-          tasksList:task,
-          dir:__dirname
+  } else {
+    Task.find({}, function (err, task) {
+      if (!err) {
+        res.render("tasks", {
+          tasksList: task,
+          dir: __dirname,
         });
       }
-    })
+    });
   }
-
-})
+});
 
 let port = process.env.PORT;
 if (port == null || port == "") {
